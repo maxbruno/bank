@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Tipo de transação</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Data/Hora</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of transactions; let i = index">
+            <th scope="row">
+                <container-element [ngSwitch]="transaction.transactionType">
+                    <some-element *ngSwitchCase="1">Saque</some-element>
+                    <some-element *ngSwitchCase="2">Deposito</some-element>
+                    <some-element *ngSwitchCase="3">Transferência</some-element>
+                    <some-element *ngSwitchCase="4">Rendimento</some-element>
+                    <some-element *ngSwitchDefault>Transação não identificada</some-element>
+                </container-element>
+            </th>
+            <th scope="row">{{ transaction.value | currency:'BRL'}}</th>
+            <th scope="row">{{ transaction.createAt | date:'dd/MM/yyy HH:mm:ss'}}</th>
+        </tr>
+    </tbody>
+</table>

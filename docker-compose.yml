@@ -1,0 +1,33 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+version: '3.4'
+
+services: 
+  ms-sql-server:
+    image: "microsoft/mssql-server-linux:2017-latest"
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: "Master@123"
+      MSSQL_PID: Express
+    ports: 
+      - "1433:1433"
+  bank-account-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=development
+    build:
+      context: .
+      dockerfile: src/Services/Account/Bank.Account.API/Dockerfile
+    ports: 
+      - "4100:80"
+  bank-account-web:
+    image: bankaccountweb
+    build:
+      context: src/Web/Account
+      dockerfile: Dockerfile
+    ports: 
+      - "4200:4200"
+  bank-workservice-account:
+      image: bankworkserviceaccount
+      build:
+        context: .
+        dockerfile: src/WorkerServiceAccount/Dockerfile
+

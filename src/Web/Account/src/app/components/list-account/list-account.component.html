@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Agência</th>
+            <th scope="col">Conta</th>
+            <th scope="col">Titular</th>
+            <th scope="col">Saldo</th>
+            <th scope="col">Opções</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let account of accounts; let i = index">
+            <th scope="row">{{ account.agencyNumber }}</th>
+            <th scope="row">{{ account.accountNumber }}</th>
+            <th scope="row">{{ account.accountHolder }}</th>
+            <th scope="row">{{ account.accountBalance }}</th>
+            <td>
+                <a class="btn btn-info" [routerLink]="['/transaction-details', account.id]">Transações</a>
+                <a class="btn btn-primary" [routerLink]="['/create-transaction', account.id]">Nova Transação</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

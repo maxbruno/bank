@@ -1,0 +1,49 @@
+<br>
+<div class="card">
+    <div class="card-body">
+
+        <h3>Nova Transação</h3>
+        <br>
+        <p *ngIf="isValidFormSubmitted && transactionForm.pristine" [ngClass]="'success'">
+            Transação realizada com suecesso.
+        </p>
+        <form [formGroup]="transactionForm" (ngSubmit)="onFormSubmit()">
+            <div class="form-group">
+                <label for="txtValue">Valor</label>
+                <input currencyMask formControlName="value" class="form-control col-lg-2">
+                <div *ngIf="transactionForm.get('value').invalid && isValidFormSubmitted != null && !isValidFormSubmitted"
+                    [ngClass]="'error'">
+                    informe um valor.
+                </div>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="form-check-inline">
+                    <input type="radio" value="1" formControlName="transactionType"> Saque
+                    <div *ngIf="transactionForm.get('transactionType').invalid && isValidFormSubmitted != false && !isValidFormSubmitted"
+                        [ngClass]="'error'">
+                        escolha uma transação.
+                    </div>
+                </div>
+                <div class="form-check-inline">
+                    <input type="radio" value="2" formControlName="transactionType"> Deposito
+                    <div *ngIf="transactionForm.get('transactionType').invalid && isValidFormSubmitted != false && !isValidFormSubmitted"
+                        [ngClass]="'error'">
+                        escolha uma transação.
+                    </div>
+                </div>
+                <div class="form-check-inline">
+                    <input type="radio" value="3" formControlName="transactionType"> Transferência
+                    <div *ngIf="transactionForm.get('transactionType').invalid && isValidFormSubmitted != false && !isValidFormSubmitted"
+                        [ngClass]="'error'">
+                        escolha uma transação.
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <button class="btn btn-success">Realizar transação</button>
+        </form>
+    </div>
+</div>

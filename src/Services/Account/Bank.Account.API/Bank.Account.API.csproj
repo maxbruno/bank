@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>6c29c8e5ede2eda03596ef56099bd3fc</UserSecretsId>
+  </PropertyGroup>
+   <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bank.Account.Application\Bank.Account.Application.csproj" />
+    <ProjectReference Include="..\Bank.Account.Data\Bank.Account.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="src\Services\Account\Bank.Account.API\Bank.Account.API.csproj\bin\Debug\netcoreapp3.1\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="src\Services\Account\Bank.Account.API\Bank.Account.API.csproj\bin\Debug\netcoreapp3.1\appsettings.json" />
+    <_ContentIncludedByDefault Remove="src\Services\Account\Bank.Account.API\Bank.Account.API.csproj\bin\Debug\netcoreapp3.1\Bank.Account.API.deps.json" />
+    <_ContentIncludedByDefault Remove="src\Services\Account\Bank.Account.API\Bank.Account.API.csproj\bin\Debug\netcoreapp3.1\Bank.Account.API.runtimeconfig.dev.json" />
+    <_ContentIncludedByDefault Remove="src\Services\Account\Bank.Account.API\Bank.Account.API.csproj\bin\Debug\netcoreapp3.1\Bank.Account.API.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="src\Services\Account\Bank.Account.API\Bank.Account.API.csproj\bin\Debug\netcoreapp3.1\Properties\launchSettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Extensions\Migrations\SeedExtensions.cs" />
+  </ItemGroup>
+</Project>
