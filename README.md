@@ -28,7 +28,13 @@ Passos para execução do projeto:
 
 > *docker-compose down*
 
-## Estrutura
+4. Urls disponibilizadas:
+* front-end: <http://localhost:4200/>
+* back-end: <http://localhost:4100/swagger/index.html>
+
+>Caso seja necessário alterar a porta dos serviços, tal alteração deve ser feita no aquivo **docker-compose.yml**
+
+## Estrutura BackEnd
 
 Padrão das camadas do projeto:
 
