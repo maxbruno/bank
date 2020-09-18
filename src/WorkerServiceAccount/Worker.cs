@@ -17,13 +17,15 @@ namespace WorkerServiceAccount
         private CrontabSchedule _schedule;
         private DateTime _nextRun;
 
-        private string Schedule => "*/60 * * * * *";
+        //para teste de 1 em 1 minuto
+        //private string Schedule => "*/60 * * * * *";
+        private string Schedule => "* 59 23 * * *";
 
         public Worker(ILogger<Worker> logger, IAccountService accountService)
         {
             _logger = logger;
             _accountService = accountService;
-            _schedule = CrontabSchedule.Parse(Schedule, new CrontabSchedule.ParseOptions {IncludingSeconds = true});
+            _schedule = CrontabSchedule.Parse(Schedule, new CrontabSchedule.ParseOptions { IncludingSeconds = true });
             _nextRun = _schedule.GetNextOccurrence(DateTime.Now);
         }
 
@@ -39,7 +41,7 @@ namespace WorkerServiceAccount
                     var nextrun = _schedule.GetNextOccurrence(now);
                     if (now > _nextRun)
                     {
-                        await Process();
+                        await Calculeted();
                         _nextRun = _schedule.GetNextOccurrence(DateTime.Now);
                     }
 
@@ -48,7 +50,7 @@ namespace WorkerServiceAccount
             }
         }
 
-        private async Task Process()
+        private async Task Calculeted()
         {
             _logger.LogInformation($"Buscando contas.");
             var accounts = await _accountService.GetAllAccounts();
